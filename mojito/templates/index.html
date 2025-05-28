@@ -1,0 +1,1380 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <!-- Menu content -->
+  <div class="container py-5">
+<form method="POST" action="{% url 'place_order' %}">
+  {% csrf_token %}
+  
+  <!-- Your cart items or product inputs here -->
+
+  <label for="table_no" class="form-label">Select Table Number:</label>
+  <select name="table_no" id="table_no" class="form-select" required>
+    <option value="" disabled selected>Select Table</option>
+    {% for i in table_numbers %}
+      <option value="{{ i }}">Table {{ i }}</option>
+    {% endfor %}
+  </select>
+
+  <button type="submit" class="btn btn-primary mt-3">Place Order</button>
+</form>
+
+<!-- Menu content -->
+<div class="container py-5">
+  <section id="mojitos" class="mb-5">
+    <h2 class="mb-4">Mojitos</h2>
+    <div class="row g-4">
+      <!-- Classic Lemon -->
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100">
+          <img src="{% static 'images/classic lemon.jpeg' %}" class="card-img-top" alt="Classic Lemon">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Classic Lemon</h5>
+            <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+              {% csrf_token %}
+              <input type="hidden" name="item_name" value="Classic Lemon">
+              <input type="hidden" name="item_price" value="?">
+              <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blue Mojito -->
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100">
+          <img src="{% static 'images/blue mojito.jpeg' %}" class="card-img-top" alt="Blue Mojito">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Blue Mojito</h5>
+            <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+              {% csrf_token %}
+              <input type="hidden" name="item_name" value="Blue Mojito">
+              <input type="hidden" name="item_price" value="?">
+              <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Black Current -->
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100">
+          <img src="{% static 'images/black current.jpeg' %}" class="card-img-top" alt="Black Current">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Black Current</h5>
+            <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+              {% csrf_token %}
+              <input type="hidden" name="item_name" value="Black Current">
+              <input type="hidden" name="item_price" value="?">
+              <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Orange Mojito -->
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100">
+          <img src="{% static 'images/orange mojito.jpeg' %}" class="card-img-top" alt="Orange Mojito">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Orange Mojito</h5>
+            <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+              {% csrf_token %}
+              <input type="hidden" name="item_name" value="Orange Mojito">
+              <input type="hidden" name="item_price" value="?">
+              <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Strawberry Mojito -->
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100">
+          <img src="{% static 'images/strawberry mojito.jpeg' %}" class="card-img-top" alt="Strawberry Mojito">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Strawberry Mojito</h5>
+            <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+              {% csrf_token %}
+              <input type="hidden" name="item_name" value="Strawberry Mojito">
+              <input type="hidden" name="item_price" value="?">
+              <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Litchi Mojito -->
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100">
+          <img src="{% static 'images/litchi mojito.jpeg' %}" class="card-img-top" alt="Litchi Mojito">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Litchi Mojito</h5>
+            <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+              {% csrf_token %}
+              <input type="hidden" name="item_name" value="Litchi Mojito">
+              <input type="hidden" name="item_price" value="?">
+              <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grape Mojito -->
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100">
+          <img src="{% static 'images/grapes mojito.jpeg' %}" class="card-img-top" alt="Grape Mojito">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Grape Mojito</h5>
+            <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+              {% csrf_token %}
+              <input type="hidden" name="item_name" value="Grape Mojito">
+              <input type="hidden" name="item_price" value="?">
+              <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Watermelon Mojito -->
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100">
+          <img src="{% static 'images/watermelon mojito.jpeg' %}" class="card-img-top" alt="Watermelon Mojito">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Watermelon Mojito</h5>
+            <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+              {% csrf_token %}
+              <input type="hidden" name="item_name" value="Watermelon Mojito">
+              <input type="hidden" name="item_price" value="120">
+              <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- mango Mojito -->
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100">
+          <img src="{% static 'images/manjo mojito.jpeg' %}" class="card-img-top" alt="Mango Mojito">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Mango Mojito</h5>
+            <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+              {% csrf_token %}
+              <input type="hidden" name="item_name" value="Mango Mojito">
+              <input type="hidden" name="item_price" value="?">
+              <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+        <!-- greenapple  Mojito -->
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100">
+          <img src="{% static 'images/greenapple mojito.jpeg' %}" class="card-img-top" alt="Greenapple Mojito">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Greenapple Mojito</h5>
+            <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+              {% csrf_token %}
+              <input type="hidden" name="item_name" value="Greenapple Mojito">
+              <input type="hidden" name="item_price" value="?">
+              <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Milkshakes -->
+<section id="milkshakes" class="mb-5">
+  <h2 class="mb-4">Milkshakes</h2>
+  <div class="row g-4">
+    <!-- Vanilla -->
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100">
+        <img src="{% static 'images/venilla milkshake.jpeg' %}" class="card-img-top" alt="Vanilla Milkshake">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Vanilla – ₹45</h5>
+          <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+            {% csrf_token %}
+            <input type="hidden" name="item_name" value="Vanilla Milkshake">
+            <input type="hidden" name="item_price" value="45">
+            <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Strawberry -->
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100">
+        <img src="{% static 'images/strawberry milkshake.jpeg' %}" class="card-img-top" alt="Strawberry Milkshake">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Strawberry – ₹45</h5>
+          <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+            {% csrf_token %}
+            <input type="hidden" name="item_name" value="Strawberry Milkshake">
+            <input type="hidden" name="item_price" value="45">
+            <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Butterscotch -->
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100">
+        <img src="{% static 'images/butterscotch milkshake.jpeg' %}" class="card-img-top" alt="Butterscotch Milkshake">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Butterscotch – ₹45</h5>
+          <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+            {% csrf_token %}
+            <input type="hidden" name="item_name" value="Butterscotch Milkshake">
+            <input type="hidden" name="item_price" value="45">
+            <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chocolate -->
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100">
+        <img src="{% static 'images/chocolate milkshake.jpeg' %}" class="card-img-top" alt="Chocolate Milkshake">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Chocolate – ₹50</h5>
+          <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+            {% csrf_token %}
+            <input type="hidden" name="item_name" value="Chocolate Milkshake">
+            <input type="hidden" name="item_price" value="50">
+            <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mango -->
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100">
+        <img src="{% static 'images/mango milkshake.jpeg' %}"class="card-img-top" alt="Mango Milkshake">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Mango – ₹45</h5>
+          <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+            {% csrf_token %}
+            <input type="hidden" name="item_name" value="Mango Milkshake">
+            <input type="hidden" name="item_price" value="45">
+            <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Black Current -->
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100">
+        <img src="{% static 'images/black current milkshake.jpeg' %}" class="card-img-top" alt="Black Current Milkshake">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Black Current – ₹45</h5>
+          <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+            {% csrf_token %}
+            <input type="hidden" name="item_name" value="Black Current Milkshake">
+            <input type="hidden" name="item_price" value="45">
+            <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Oreo -->
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100">
+        <img src="{% static 'images/oreo milkshake.jpeg' %}" class="card-img-top" alt="Oreo Milkshake">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Oreo Milkshake – ₹60</h5>
+          <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+            {% csrf_token %}
+            <input type="hidden" name="item_name" value="Oreo Milkshake">
+            <input type="hidden" name="item_price" value="60">
+            <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nutella -->
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100">
+        <img src="{% static 'images/nutella milkshake.jpeg' %}" class="card-img-top" alt="Nutella Shake">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Nutella Shake – ₹60</h5>
+          <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+            {% csrf_token %}
+            <input type="hidden" name="item_name" value="Nutella Shake">
+            <input type="hidden" name="item_price" value="60">
+            <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+     <!-- special oreo -->
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100">
+        <img src="{% static 'images/oreo milkshake.jpeg' %}" class="card-img-top" alt="Special oreo">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Special oreo – ₹60</h5>
+          <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+            {% csrf_token %}
+            <input type="hidden" name="item_name" value="Special oreo">
+            <input type="hidden" name="item_price" value="60">
+            <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Cold Coffee -->
+<section id="cold-coffee" class="mb-5">
+  <h2 class="mb-4">Cold Coffee</h2>
+  <div class="row g-4">
+    <!-- Cold Coffee -->
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100">
+        <img src="{% static 'images/cold cofee.jpeg' %}" class="card-img-top" alt="Cold Coffee">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Cold Coffee – ₹30</h5>
+          <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+            {% csrf_token %}
+            <input type="hidden" name="item_name" value="Cold Coffee">
+            <input type="hidden" name="item_price" value="30">
+            <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cold Coffee with Ice Cream -->
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100">
+        <img src="{% static 'images/coffee with icecream.jpeg' %}" class="card-img-top" alt="Cold Coffee with Ice Cream">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Cold Coffee with Ice Cream – ₹50</h5>
+          <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+            {% csrf_token %}
+            <input type="hidden" name="item_name" value="Cold Coffee with Ice Cream">
+            <input type="hidden" name="item_price" value="50">
+            <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hard Rock Coffee -->
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100">
+        <img src="{% static 'images/hardrock.jpeg' %}" class="card-img-top" alt="Hard Rock Coffee">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Hard Rock Coffee – ₹40</h5>
+          <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+            {% csrf_token %}
+            <input type="hidden" name="item_name" value="Hard Rock Coffee">
+            <input type="hidden" name="item_price" value="40">
+            <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chocolate Coffee -->
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100">
+        <img src="{% static 'images/chocolate cofee.jpeg' %}" class="card-img-top" alt="Chocolate Coffee">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Chocolate Coffee – ₹50</h5>
+          <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+            {% csrf_token %}
+            <input type="hidden" name="item_name" value="Chocolate Coffee">
+            <input type="hidden" name="item_price" value="50">
+            <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+       <!-- Nutella Coffee -->
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100">
+        <img src="{% static 'images/nutella cofee.jpeg' %}"class="card-img-top" alt="Nutella Coffee">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Nutella Coffee – ₹60</h5>
+          <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+            {% csrf_token %}
+            <input type="hidden" name="item_name" value="Nutella Coffee">
+            <input type="hidden" name="item_price" value="60">
+            <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pizzas -->
+<section id="pizzas" class="mb-5">
+  <h2 class="mb-4">Pizzas</h2>
+  <div class="row g-4">
+    <!-- Veg Supreme -->
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100">
+        <img src="{% static 'images/veg2.jpeg' %}" class="card-img-top" alt="Veg Supreme">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Veg Supreme – ₹70</h5>
+          <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+            {% csrf_token %}
+            <input type="hidden" name="item_name" value="Veg Supreme Pizza">
+            <input type="hidden" name="item_price" value="70">
+            <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paneer Supreme -->
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100">
+        <img src="{% static 'images/paneer pizza.jpeg' %}"  class="card-img-top" alt="Paneer Supreme">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Paneer Supreme – ₹100</h5>
+          <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+            {% csrf_token %}
+            <input type="hidden" name="item_name" value="Paneer Supreme Pizza">
+            <input type="hidden" name="item_price" value="100">
+            <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cheese Burst -->
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100">
+        <img src="{% static 'images/cheese pizza.jpeg' %}"  class="card-img-top" alt="Cheese Corn">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Cheese Corn – ₹90</h5>
+          <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+            {% csrf_token %}
+            <input type="hidden" name="item_name" value="Cheese Corn Pizza">
+            <input type="hidden" name="item_price" value="90">
+            <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Margherita -->
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100">
+        <img src="{% static 'images/margarita pizza.jpeg' %}" class="card-img-top" alt="Margherita">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Margherita – ₹80</h5>
+          <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+            {% csrf_token %}
+            <input type="hidden" name="item_name" value="Margherita Pizza">
+            <input type="hidden" name="item_price" value="80">
+            <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- mushroom -->
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100">
+        <img src="{% static 'images/mashroom pizza.jpeg' %}" class="card-img-top" alt="Mushroom">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Mushroom – ₹90</h5>
+          <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+            {% csrf_token %}
+            <input type="hidden" name="item_name" value="Mushroom Pizza">
+            <input type="hidden" name="item_price" value="90">
+            <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- chicken pizza -->
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100">
+        <img src="{% static 'images/checken.jpeg' %}"  class="card-img-top" alt="Chicken">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Chicken – ₹100</h5>
+          <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+            {% csrf_token %}
+            <input type="hidden" name="item_name" value="Chicken Pizza">
+            <input type="hidden" name="item_price" value="100">
+            <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- killah pizza -->
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100">
+        <img src="{% static 'images/ pizza.jpeg' %}" class="card-img-top" alt="Killah">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Killah special – ₹80</h5>
+          <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+            {% csrf_token %}
+            <input type="hidden" name="item_name" value="Killah Pizza">
+            <input type="hidden" name="item_price" value="80">
+            <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--snacks-->
+ <section id="snacks-section">
+    <h2>Snacks</h2>
+    <div class="row">
+<!-- Fries Section -->
+<div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+    <div class="card h-100">
+        <img src="{% static 'images/french fries.jpeg' %}" class="card-img-top" alt="French Fries" />
+        <div class="card-body">
+            <h5 class="card-title">French Fries</h5>
+            <p class="card-text">S - ₹30, M - ₹50, L - ₹70</p>
+            <form method="POST" action="{% url 'add_to_cart' %}">
+                {% csrf_token %}
+                <input type="hidden" name="item_name" value="French Fries">
+                <div class="mb-2">
+                    <label for="french-fries-size" class="form-label visually-hidden">Select Size</label>
+                    <select name="size_price" id="french-fries-size" class="form-select" required>
+                        <option value="" disabled selected>Select Size</option>
+                        <option value="S-30">Small - ₹30</option>
+                        <option value="M-50">Medium - ₹50</option>
+                        <option value="L-70">Large - ₹70</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Add to Cart</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+    <div class="card h-100">
+        <img src="{% static 'images/peri peri fries.jpeg' %}"class="card-img-top" alt="Piri Piri Fries" />
+        <div class="card-body">
+            <h5 class="card-title">Piri Piri Fries</h5>
+            <p class="card-text">S - ₹40, M - ₹60, L - ₹80</p>
+            <form method="POST" action="{% url 'add_to_cart' %}">
+                {% csrf_token %}
+                <input type="hidden" name="item_name" value="Piri Piri Fries">
+                <div class="mb-2">
+                    <label for="piri-piri-fries-size" class="form-label visually-hidden">Select Size</label>
+                    <select name="size_price" id="piri-piri-fries-size" class="form-select" required>
+                        <option value="" disabled selected>Select Size</option>
+                        <option value="S-40">Small - ₹40</option>
+                        <option value="M-60">Medium - ₹60</option>
+                        <option value="L-80">Large - ₹80</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Add to Cart</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+    <div class="card h-100">
+        <img src="{% static 'images/masala fries.jpeg' %}" class="card-img-top" alt="Cheesy Fries" />
+        <div class="card-body">
+            <h5 class="card-title">Masala Fries</h5>
+            <p class="card-text">S - ₹40, M - ₹60, L - ₹80</p>
+            <form method="POST" action="{% url 'add_to_cart' %}">
+                {% csrf_token %}
+                <input type="hidden" name="item_name" value="Cheesy Fries">
+                <div class="mb-2">
+                    <label for="cheesy-fries-size" class="form-label visually-hidden">Select Size</label>
+                    <select name="size_price" id="cheesy-fries-size" class="form-select" required>
+                        <option value="" disabled selected>Select Size</option>
+                        <option value="S-40">Small - ₹40</option>
+                        <option value="M-60">Medium - ₹60</option>
+                        <option value="L-80">Large - ₹80</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Add to Cart</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+    <div class="card h-100">
+        <img src="{% static 'images/mexican fries.jpeg' %}" class="card-img-top" alt="Spicy Cheesy Fries" />
+        <div class="card-body">
+            <h5 class="card-title">Mexican Fries</h5>
+            <p class="card-text">S - ₹40, M - ₹60, L - ₹80</p>
+            <form method="POST" action="{% url 'add_to_cart' %}">
+                {% csrf_token %}
+                <input type="hidden" name="item_name" value="Mexican Fries">
+                <div class="mb-2">
+                    <label for="spicy-cheesy-fries-size" class="form-label visually-hidden">Select Size</label>
+                    <select name="size_price" id="spicy-cheesy-fries-size" class="form-select" required>
+                        <option value="" disabled selected>Select Size</option>
+                        <option value="S-40">Small - ₹40</option>
+                        <option value="M-60">Medium - ₹60</option>
+                        <option value="L-80">Large - ₹80</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Add to Cart</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Cheese Balls Section -->
+<div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+    <div class="card h-100">
+        <img src="{% static 'images/sweetcorn.jpeg' %}" class="card-img-top" alt="Cheese Balls" />
+        <div class="card-body">
+            <h5 class="card-title">Sweetcorn</h5>
+            <p class="card-text">S - ₹20, M - ₹30, L - ₹50</p>
+            <form method="POST" action="{% url 'add_to_cart' %}">
+                {% csrf_token %}
+                <input type="hidden" name="item_name" value="Sweetcorn">
+                <div class="mb-2">
+                    <label for="cheese-balls-size" class="form-label visually-hidden">Select Size</label>
+                    <select name="size_price" id="cheese-balls-size" class="form-select" required>
+                        <option value="" disabled selected>Select Size</option>
+                        <option value="S-40">Small - ₹20</option>
+                        <option value="M-60">Medium - ₹30</option>
+                        <option value="L-80">Large - ₹50</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Add to Cart</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+    <div class="card h-100">
+        <img src="{% static 'images/.jpeg' %}" class="card-img-top" alt="Cheese Corn Balls" />
+        <div class="card-body">
+            <h5 class="card-title">Spicy Corn </h5>
+            <p class="card-text">S - ₹30, M - ₹40, L - ₹60</p>
+            <form method="POST" action="{% url 'add_to_cart' %}">
+                {% csrf_token %}
+                <input type="hidden" name="item_name" value="Spicy Corn">
+                <div class="mb-2">
+                    <label for="cheese-corn-balls-size" class="form-label visually-hidden">Select Size</label>
+                    <select name="size_price" id="cheese-corn-balls-size" class="form-select" required>
+                        <option value="" disabled selected>Select Size</option>
+                        <option value="S-40">Small - ₹30</option>
+                        <option value="M-60">Medium - ₹40</option>
+                        <option value="L-80">Large - ₹60</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Add to Cart</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+    <div class="card h-100">
+        <img src="{% static 'images/spring potato.jpeg' %}" class="card-img-top" alt="Chilli Cheese Balls" />
+        <div class="card-body">
+            <h5 class="card-title">Spring Potato</h5>
+            <p class="card-text">S - ₹20, M - ₹25, L - ₹30</p>
+            <form method="POST" action="{% url 'add_to_cart' %}">
+                {% csrf_token %}
+                <input type="hidden" name="item_name" value="Spring Potato">
+                <div class="mb-2">
+                    <label for="chilli-cheese-balls-size" class="form-label visually-hidden">Select Size</label>
+                    <select name="size_price" id="chilli-cheese-balls-size" class="form-select" required>
+                        <option value="" disabled selected>Select Size</option>
+                        <option value="S-40">Small - ₹20</option>
+                        <option value="M-60">Medium - ₹25</option>
+                        <option value="L-80">Large - ₹30</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Add to Cart</button>
+            </form>
+        </div>
+    </div>
+  </div>
+  
+
+    
+<div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+    <div class="card h-100">
+        <img src="{% static 'images/peri corn.jpeg' %}" class="card-img-top" alt="Chilli Cheese Balls" />
+        <div class="card-body">
+            <h5 class="card-title">Peri Peri Corn</h5>
+            <p class="card-text">S - ₹30, M - ₹40, L - ₹60</p>
+            <form method="POST" action="{% url 'add_to_cart' %}">
+                {% csrf_token %}
+                <input type="hidden" name="item_name" value="Peri Peri Corn">
+                <div class="mb-2">
+                    <label for="chilli-cheese-balls-size" class="form-label visually-hidden">Select Size</label>
+                    <select name="size_price" id="chilli-cheese-balls-size" class="form-select" required>
+                        <option value="" disabled selected>Select Size</option>
+                        <option value="S-40">Small - ₹30</option>
+                        <option value="M-60">Medium - ₹40</option>
+                        <option value="L-80">Large - ₹60</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Add to Cart</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+   <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card h-100">
+                <img src="{% static 'images/smilyes.jpeg' %}" class="card-img-top" alt="Royal Falooda">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Smiley – ₹50</h5>
+                    <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_name" value="Smiley">
+                        <input type="hidden" name="item_price" value="50">
+                        <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+</div>
+ </section>
+<!-- Falooda -->
+<section id="falooda" class="mb-5">
+    <h2 class="mb-4">Falooda</h2>
+    <div class="row g-4">
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card h-100">
+                <img src="{% static 'images/special falooda.jpeg' %}" class="card-img-top" alt="Special Falooda">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Special Falooda </h5>
+                    <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_name" value="Special Falooda">
+                        <input type="hidden" name="item_price" value="?">
+                        <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card h-100">
+                <img src="{% static 'images/royal falooda.jpeg' %}" class="card-img-top" alt="Royal Falooda">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Royal Falooda</h5>
+                    <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_name" value="Royal Falooda">
+                        <input type="hidden" name="item_price" value="?">
+                        <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card h-100">
+                <img src="{% static 'images/arebian falooda.jpeg' %}" class="card-img-top" alt="Arebian Falooda">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Arebian Falooda </h5>
+                    <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_name" value="Arebian Falooda">
+                        <input type="hidden" name="item_price" value="?">
+                        <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+  <!-- Burgers -->
+<section class="mb-5">
+  <h2 class="mb-4">Burgers</h2>
+  <div class="row g-4">
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100">
+        <img src="{% static 'images/vegburger.jpeg' %}" class="card-img-top" alt="Veg Burger">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Veg Burger – ₹40</h5>
+          <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+            {% csrf_token %}
+            <input type="hidden" name="item_name" value="Veg Burger">
+            <input type="hidden" name="item_price" value="40">
+            <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100">
+        <img src="{% static 'images/double patti veg.jpeg' %}" class="card-img-top" alt="Double Patty Veg Burger">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Double Patty Veg Burger – ₹60</h5>
+          <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+            {% csrf_token %}
+            <input type="hidden" name="item_name" value="Double Patty Veg Burger">
+            <input type="hidden" name="item_price" value="60">
+            <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100">
+        <img src="{% static 'images/veg cheese.jpeg' %}" class="card-img-top" alt="Veg Cheese Burger">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Veg Cheese Burger – ₹60</h5>
+          <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+            {% csrf_token %}
+            <input type="hidden" name="item_name" value="Veg Cheese Burger">
+            <input type="hidden" name="item_price" value="60">
+            <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100">
+        <img src="{% static 'images/cripy chicken.jpeg' %}" class="card-img-top" alt="Crispy Chicken Burger">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Crispy Chicken Burger – ₹50</h5>
+          <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+            {% csrf_token %}
+            <input type="hidden" name="item_name" value="Crispy Chicken Burger">
+            <input type="hidden" name="item_price" value="50">
+            <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100">
+        <img src="{% static 'images/double patti chicken.jpeg' %}" class="card-img-top" alt="Double Chicken Patty Burger">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Double Chicken Patty Burger – ₹80</h5>
+          <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+            {% csrf_token %}
+            <input type="hidden" name="item_name" value="Double Chicken Patty Burger">
+            <input type="hidden" name="item_price" value="80">
+            <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100">
+        <img src="{% static 'images/fried chicken.jpeg' %}" class="card-img-top" alt="Fried Chicken Burger">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Fried Chicken Burger – ₹70</h5>
+          <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+            {% csrf_token %}
+            <input type="hidden" name="item_name" value="Fried Chicken Burger">
+            <input type="hidden" name="item_price" value="70">
+            <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100">
+        <img src="{% static 'images/popcorn chicken.jpeg' %}" class="card-img-top" alt="Popcorn Chicken Burger">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Popcorn Chicken Burger – ₹70</h5>
+          <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+            {% csrf_token %}
+            <input type="hidden" name="item_name" value="Popcorn Chicken Burger">
+            <input type="hidden" name="item_price" value="70">
+            <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100">
+        <img src="{% static 'images/no bun.jpeg' %}" class="card-img-top" alt="No Bun Burger">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">No Bun Burger – ₹120</h5>
+          <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+            {% csrf_token %}
+            <input type="hidden" name="item_name" value="No Bun Burger">
+            <input type="hidden" name="item_price" value="120">
+            <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100">
+        <img src="{% static 'images/cheese chicken.jpeg' %}"class="card-img-top" alt="Fried Cheese Chicken Burger">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Fried Cheese Chicken Burger – ₹100</h5>
+          <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+            {% csrf_token %}
+            <input type="hidden" name="item_name" value="Fried Cheese Chicken Burger">
+            <input type="hidden" name="item_price" value="100">
+            <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--fried chickens-->
+<section class="mb-5">
+  <h2 class="mb-4">Fried Chicken</h2>
+  <div class="row g-4">
+
+    <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+      <div class="card h-100">
+        <img src="{% static 'images/popcorn.jpeg' %}"class="card-img-top" alt="Popcorn Chicken" />
+        <div class="card-body">
+          <h5 class="card-title">Popcorn Chicken</h5>
+          <p class="card-text">S - ₹50, L - ₹80</p>
+          <form method="POST" action="{% url 'add_to_cart' %}">
+            {% csrf_token %}
+            <input type="hidden" name="item_name" value="Popcorn Chicken" />
+            <div class="mb-2">
+              <label for="popcorn-chicken-size" class="form-label visually-hidden">Select Size</label>
+              <select name="size_price" id="popcorn-chicken-size" class="form-select" required>
+                <option value="" disabled selected>Select Size</option>
+                <option value="S-50">Small - ₹50</option>
+                <option value="L-80">Large - ₹80</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+      <div class="card h-100">
+        <img src="{% static 'images/peri.jpeg' %}" class="card-img-top" alt="Piri Piri Chicken" />
+        <div class="card-body">
+          <h5 class="card-title">Piri Piri Chicken</h5>
+          <p class="card-text">S - ₹60, L - ₹90</p>
+          <form method="POST" action="{% url 'add_to_cart' %}">
+            {% csrf_token %}
+            <input type="hidden" name="item_name" value="Piri Piri Chicken" />
+            <div class="mb-2">
+              <label for="piri-piri-chicken-size" class="form-label visually-hidden">Select Size</label>
+              <select name="size_price" id="piri-piri-chicken-size" class="form-select" required>
+                <option value="" disabled selected>Select Size</option>
+                <option value="S-60">Small - ₹60</option>
+                <option value="L-90">Large - ₹90</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+            <div class="card h-100">
+                <img src="https://via.placeholder.com/300x200?text=Strip+Fried" class="card-img-top" alt="Strip Fried">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Strip Fried – ₹80</h5>
+                    <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_name" value="Strip Fried">
+                        <input type="hidden" name="item_price" value="80">
+                        <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+            <div class="card h-100">
+                <img src="{% static 'images/legpice.jpeg' %}" class="card-img-top" alt="Leg Piece">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Leg Piece – 2 -₹100</h5>
+                    <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_name" value="Leg Piece">
+                        <input type="hidden" name="item_price" value="100">
+                        <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+            <div class="card h-100">
+                <img src="{% static 'images/tenders.jpeg' %}" class="card-img-top" alt="Chicken Tenders">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Chicken Tenders – ₹70</h5>
+                    <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_name" value="Chicken Tenders">
+                        <input type="hidden" name="item_price" value="70">
+                        <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+            <div class="card h-100">
+                <img src="{% static 'images/wings.jpeg' %}" class="card-img-top" alt="Wings">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Wings – ₹60</h5>
+                    <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_name" value="Wings">
+                        <input type="hidden" name="item_price" value="60">
+                        <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- Fresh Juice Section -->
+<section class="mb-5">
+    <h2 class="mb-4">Fresh Juice</h2>
+    <div class="row g-4">
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card h-100">
+                <img src="{% static 'images/lemon.jpeg' %}" class="card-img-top" alt="Fresh Lemon">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Fresh Lemon – ₹20</h5>
+                    <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_name" value="Fresh Lemon">
+                        <input type="hidden" name="item_price" value="20">
+                        <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card h-100">
+                <img src="{% static 'images/lemonied.jpeg' %}" class="card-img-top" alt="Lemonade">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Lemonade – ₹30</h5>
+                    <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_name" value="Lemonade">
+                        <input type="hidden" name="item_price" value="30">
+                        <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card h-100">
+                <img src="{% static 'images/watermelon.jpeg' %}" class="card-img-top" alt="Watermelon">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Watermelon – ₹30</h5>
+                    <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_name" value="Watermelon">
+                        <input type="hidden" name="item_price" value="30">
+                        <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card h-100">
+                <img src="{% static 'images/muskmelon.jpeg' %}" class="card-img-top" alt="Musk Melon">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Musk Melon – ₹30</h5>
+                    <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_name" value="Musk Melon">
+                        <input type="hidden" name="item_price" value="30">
+                        <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card h-100">
+                <img src="{% static 'images/orange.jpeg' %}" class="card-img-top" alt="Orange">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Orange – ₹40</h5>
+                    <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_name" value="Orange">
+                        <input type="hidden" name="item_price" value="40">
+                        <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card h-100">
+                <img src="{% static 'images/mosambi.jpeg' %}"class="card-img-top" alt="Mosambi">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Mosambi – ₹40</h5>
+                    <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_name" value="Mosambi">
+                        <input type="hidden" name="item_price" value="40">
+                        <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card h-100">
+                <img src="{% static 'images/pineapple.jpeg' %}" class="card-img-top" alt="Pineapple">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Pineapple – ₹40</h5>
+                    <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_name" value="Pineapple">
+                        <input type="hidden" name="item_price" value="40">
+                        <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card h-100">
+                <img src="{% static 'images/mango.jpeg' %}" class="card-img-top" alt="Mango">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Mango – ₹50</h5>
+                    <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_name" value="Mango">
+                        <input type="hidden" name="item_price" value="50">
+                        <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card h-100">
+                <img src="{% static 'images/apple.jpeg' %}" class="card-img-top" alt="Apple">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Apple – ₹50</h5>
+                    <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_name" value="Apple">
+                        <input type="hidden" name="item_price" value="50">
+                        <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card h-100">
+                <img src="{% static 'images/grapes.jpeg' %}" class="card-img-top" alt="Grapes">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Grapes – ₹50</h5>
+                    <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_name" value="Grapes">
+                        <input type="hidden" name="item_price" value="50">
+                        <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Milk Beverages Section -->
+<section class="mb-5">
+    <h2 class="mb-4">Milk Beverages</h2>
+    <div class="row g-4">
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card h-100">
+                <img src="{% static 'images/rosemilk.jpeg' %}"class="card-img-top" alt="Rose Milk">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Rose Milk – ₹30</h5>
+                    <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_name" value="Rose Milk">
+                        <input type="hidden" name="item_price" value="30">
+                        <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card h-100">
+                <img src="{% static 'images/badammilk.jpeg' %}" class="card-img-top" alt="Badam Milk">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Badam Milk – ₹30</h5>
+                    <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_name" value="Badam Milk">
+                        <input type="hidden" name="item_price" value="30">
+                        <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card h-100">
+                <img src="{% static 'images/mohabath.jpeg' %}" class="card-img-top" alt="Mohabbat Ka Sharbat">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Mohabbat Ka Sharbat – ₹30</h5>
+                    <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_name" value="Mohabbat Ka Sharbat">
+                        <input type="hidden" name="item_price" value="30">
+                        <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Ice Cream Dessert Section -->
+<section class="mb-5">
+    <h2 class="mb-4">Ice Cream Dessert</h2>
+    <div class="row g-4">
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card h-100">
+                <img src="{% static 'images/vennila.jpeg' %}" class="card-img-top" alt="Vanilla Choco">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Vanilla Choco – ₹30</h5>
+                    <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_name" value="Vanilla Choco">
+                        <input type="hidden" name="item_price" value="30">
+                        <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card h-100">
+                <img src="{% static 'images/vennila icecream.jpeg' %}" class="card-img-top" alt="Vanilla">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Vanilla – ₹25</h5>
+                    <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_name" value="Vanilla">
+                        <input type="hidden" name="item_price" value="25">
+                        <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card h-100">
+                <img src="{% static 'images/browine.jpeg' %}" class="card-img-top" alt="Brownie with Ice Cream">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Brownie with Ice Cream – ₹50</h5>
+                    <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_name" value="Brownie with Ice Cream">
+                        <input type="hidden" name="item_price" value="50">
+                        <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card h-100">
+                <img src="{% static 'images/chocolate fudge.jpeg' %}" class="card-img-top" alt="Chocolate Fudge">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Chocolate Fudge – ₹50</h5>
+                    <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_name" value="Chocolate Fudge">
+                        <input type="hidden" name="item_price" value="50">
+                        <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card h-100">
+                <img src="{% static 'images/nutella icecream.jpeg' %}" class="card-img-top" alt="Nutella Ice Cream">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Nutella Ice Cream – ₹70</h5>
+                    <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_name" value="Nutella Ice Cream">
+                        <input type="hidden" name="item_price" value="70">
+                        <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card h-100">
+                <img src="{% static 'images/nutella brownie.jpeg' %}" class="card-img-top" alt="Nutella Brownie">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Nutella Brownie – ₹70</h5>
+                    <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_name" value="Nutella Brownie">
+                        <input type="hidden" name="item_price" value="70">
+                        <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card h-100">
+                <img src="{% static 'images/death.jpeg' %}" class="card-img-top" alt="Death by Chocolate">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Death by Chocolate – ₹90</h5>
+                    <form method="POST" action="{% url 'add_to_cart' %}" class="mt-auto">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_name" value="Death by Chocolate">
+                        <input type="hidden" name="item_price" value="90">
+                        <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+ {% endblock %}
+

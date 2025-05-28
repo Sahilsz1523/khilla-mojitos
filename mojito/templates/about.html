@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container py-5">
+  <div class="content-box">
+    <h1 class="mb-5 text-center">About Khillah Mojito</h1>
+    <p class="lead text-center mb-5">
+      Welcome to Killah Mojito! We pride ourselves on delivering the freshest mojitos and an unforgettable dining experience.
+    </p>
+
+    <h2 class="mb-4 text-center">Our Team</h2>
+    <div class="row justify-content-center">
+      <!-- Owner: Thofic -->
+      <div class="col-md-5 col-lg-4 mb-5 text-center">
+        <p class="text-muted fst-italic">Owner of Killah Mojito</p>
+        <p><a href="mailto:Thoufic854@email.com" class="text-decoration-none text-white"><i class="bi bi-envelope-fill"></i> Thoufic854@email.com</a></p>
+        <p>
+          <a href="https://instagram.com/thoufic_r" target="_blank" rel="noopener" class="btn btn-outline-primary btn-sm mx-1">
+            <i class="bi bi-instagram"></i> Instagram
+          </a>
+          <a href="https://wa.me/9787428279" target="_blank" rel="noopener" class="btn btn-outline-success btn-sm mx-1">
+            <i class="bi bi-whatsapp"></i> WhatsApp
+          </a>
+          
+        </p>
+      </div>
+
+      <!-- Creator: Website Developer -->
+      <div class="col-md-5 col-lg-4 mb-5 text-center">
+        <img src="{% static 'images/sahil.jpg' %}" alt="Website Creator" class="rounded-circle img-fluid mb-3" />
+        <h4>Website Creator Name</h4>
+        <p class="text-muted fst-italic">Website Developer</p>
+        <p><a href="mailto:sahilsn2005@gmail.com" class="text-decoration-none text-white"><i class="bi bi-envelope-fill"></i> creator@example.com</a></p>
+        <p>
+          <a href="https://instagram.com/sahil_sz_23" target="_blank" rel="noopener" class="btn btn-outline-primary btn-sm mx-1">
+            <i class="bi bi-instagram"></i> Instagram
+          </a>
+          <a href="https://wa.me/9500556699" target="_blank" rel="noopener" class="btn btn-outline-success btn-sm mx-1">
+            <i class="bi bi-whatsapp"></i> WhatsApp
+          </a>
+          <a href="https://linkedin.com/sahil-sz-0b2910357" target="_blank" rel="noopener" class="btn btn-outline-info btn-sm mx-1">
+            <i class="bi bi-linkedin"></i> LinkedIn
+          </a>
+        </p>
+         <p>
+                  📩 <strong>Email:</strong> <a href="mailto:sahilsn2005@gmail.com">sahilsn2005@gmail.com</a>
+                  <br>
+                  📞 <strong>Phone:</strong> <a href="tel:9500556699">+919500556699</a>
+              </p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="cart-container">
+  <h2 class="cart-header">Your Cart</h2>
+
+  <ul class="list-group mb-3">
+    {% for item in cart %}
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+          <strong>{{ item.name }}</strong> <small class="text-muted">({{ item.size }})</small>
+        </div>
+        <div class="d-flex align-items-center">
+          <span class="me-3 fw-semibold">₹{{ item.price }}</span>
+          <form method="POST" action="{% url 'remove_from_cart' forloop.counter0 %}" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-danger btn-sm">Remove</button>
+          </form>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+
+  {% if cart %}
+    <form method="POST" action="{% url 'place_order' %}">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-success btn-lg w-100">Place Order</button>
+    </form>
+  {% else %}
+    <p class="text-muted">Your cart is empty.</p>
+  {% endif %}
+</div>
+
+ {% endblock %}
