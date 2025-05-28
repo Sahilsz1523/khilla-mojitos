@@ -1,6 +1,44 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container py-5 text-center">
+<style>
+  .order-confirmation {
+    background-color: #000; /* black background */
+    color: #fff;            /* white text */
+    max-width: 500px;
+    margin: 5rem auto;
+    padding: 3rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .order-confirmation h2 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .order-confirmation p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+
+  .order-confirmation a.btn-primary {
+    background-color: #1e90ff;
+    border: none;
+    padding: 0.75rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+  }
+
+  .order-confirmation a.btn-primary:hover {
+    background-color: #007acc;
+    color: #fff;
+  }
+</style>
+
+<div class="order-confirmation text-center">
   <h2>Thank you for your order!</h2>
   <p>Your order has been sent successfully.</p>
   <a href="{% url 'index' %}" class="btn btn-primary">Back to Menu</a>
