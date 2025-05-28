@@ -11,7 +11,7 @@ SECRET_KEY = 'your-secret-key-here'  # Replace with your own secure key
 DEBUG = False
 
 # Set your Render domain only (no localhost)
-ALLOWED_HOSTS = ['your-service-name.onrender.com']  # Replace with your actual Render domain
+ALLOWED_HOSTS = ['khilla-mojitos.onrender.com']  # Replace with your actual Render domain
 
 # Application definition
 INSTALLED_APPS = [
