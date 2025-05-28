@@ -5,13 +5,16 @@ import dj_database_url
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'your-secret-key-here'  # Replace with your own secure key
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'your-default-secret-key-for-dev')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.getenv('DJANGO_DEBUG', 'False').lower() in ('true', '1', 't')
 
-# Set your Render domain only (no localhost)
-ALLOWED_HOSTS = ['khilla-mojitos-2.onrender.com', 'localhost', '127.0.0.1']  # Replace with your actual Render domain
+ALLOWED_HOSTS = [
+    'khilla-mojitos-2.onrender.com',
+    'localhost',
+    '127.0.0.1',
+]
 
 # Application definition
 INSTALLED_APPS = [
@@ -26,7 +29,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware', 
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # for static files
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -55,7 +58,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'myapp.wsgi.application'
 
-# Database (uses PostgreSQL in Render or SQLite as fallback)
+# Database config - Postgres on Render, fallback SQLite locally
 DATABASES = {
     'default': dj_database_url.config(
         default=f'sqlite:///{BASE_DIR / "db.sqlite3"}'
@@ -78,16 +81,19 @@ USE_TZ = True
 
 # Static files
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # collectstatic will put files here
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'mojito', 'static')]
 
-# Email Configuration (hardcoded)
+# Enable WhiteNoise to serve static files in production
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Email Configuration from environment variables
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'Thoufic854@gmail.com'
-EMAIL_HOST_PASSWORD = 'bcjt duiq naoi ecoj'  # Your Gmail App Password
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', 'sahilsn2005@gmail.com')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', 'brha djpa hcst vite')
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

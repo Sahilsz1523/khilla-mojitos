@@ -6,7 +6,7 @@ from django.conf import settings
 from django.http import HttpResponseBadRequest
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
- 
+from django.core.mail import BadHeaderError
 
 def index(request):
     table_numbers = range(1, 11)  # Numbers from 1 to 10
@@ -61,32 +61,43 @@ def view_cart(request):
     cart = request.session.get('cart', [])
     return render(request, 'cart.html', {"cart": cart})
 
+
+
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse
+
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse
+from django.contrib import messages
+import traceback
+
 def place_order(request):
     if request.method == "POST":
         cart = request.session.get('cart', [])
         table_no = request.POST.get('table_no')
 
-        # Format order details from cart
         order_details = "\n".join([f"{item['name']} ({item.get('size', '')}) - ${item['price']}" for item in cart])
-
-        # Create email message with table number
         message = f"Table Number: {table_no}\n\nOrder Details:\n{order_details}"
 
-        send_mail(
-            subject="New Order from Table " + str(table_no),
-            message=message,
-            from_email="Thoufic854@gmail.com",
-            recipient_list=["Thoufic854@gmail.com"],
-        )
+        try:
+            send_mail(
+                subject=f"New Order from Table {table_no}",
+                message=message,
+                from_email="sahilsn2005@gmail.com",
+                recipient_list=["sahilsn2005@gmail.com"],
+                fail_silently=False,
+            )
+        except Exception as e:
+            print("EMAIL SEND FAILED:")
+            traceback.print_exc()  # This prints the full error in logs
+            messages.error(request, "Order placed, but email sending failed.")
 
-        # Optionally clear cart and add success message
         request.session['cart'] = []
         messages.success(request, "Order placed successfully!")
+        return redirect('order')
+    
+    return redirect('index')
 
-        return redirect('index')  # or wherever you want to redirect after order
-
-    else:
-        return redirect('index')
 
 @csrf_exempt  # or better, use @require_POST and CSRF properly
 def remove_from_cart(request, item_index):
