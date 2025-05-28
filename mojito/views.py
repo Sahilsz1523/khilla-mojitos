@@ -70,13 +70,28 @@ from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
 from django.contrib import messages
 import traceback
+import traceback
+from django.shortcuts import redirect, render
+from django.core.mail import send_mail
+from django.contrib import messages
 
 def place_order(request):
     if request.method == "POST":
         cart = request.session.get('cart', [])
-        table_no = request.POST.get('table_no')
+        table_no = request.POST.get('table_no') or request.session.get('table_no')
 
-        order_details = "\n".join([f"{item['name']} ({item.get('size', '')}) - ${item['price']}" for item in cart])
+        if not table_no:
+            messages.error(request, "Table number is missing.")
+            return redirect('cart_view')
+
+        if not cart:
+            messages.error(request, "Your cart is empty.")
+            return redirect('cart_view')
+
+        order_details = "\n".join([
+            f"{item['name']} ({item.get('size', '')}) - ₹{item['price']}"
+            for item in cart
+        ])
         message = f"Table Number: {table_no}\n\nOrder Details:\n{order_details}"
 
         try:
@@ -89,14 +104,15 @@ def place_order(request):
             )
         except Exception as e:
             print("EMAIL SEND FAILED:")
-            traceback.print_exc()  # This prints the full error in logs
+            traceback.print_exc()
             messages.error(request, "Order placed, but email sending failed.")
 
         request.session['cart'] = []
         messages.success(request, "Order placed successfully!")
-        return redirect('order')
+        return redirect('order')  # Redirect to order confirmation page
     
     return redirect('index')
+
 
 
 @csrf_exempt  # or better, use @require_POST and CSRF properly
