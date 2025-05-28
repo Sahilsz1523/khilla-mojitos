@@ -1,16 +1,17 @@
 from pathlib import Path
 import os
+import dj_database_url
 
-# Build paths inside the project
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'your-secret-key-here'
+SECRET_KEY = 'your-secret-key-here'  # Replace with your own secure key
 
-# SECURITY WARNING: don’t run with debug turned on in production!
-DEBUG = True
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
 
-ALLOWED_HOSTS = []
+# Set your Render domain only (no localhost)
+ALLOWED_HOSTS = ['your-service-name.onrender.com']  # Replace with your actual Render domain
 
 # Application definition
 INSTALLED_APPS = [
@@ -20,7 +21,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'mojito',  # ✅ Your app
+    'mojito',
 ]
 
 MIDDLEWARE = [
@@ -38,8 +39,8 @@ ROOT_URLCONF = 'myapp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # ✅ Global templates
-        'APP_DIRS': True,  # ✅ Looks inside each app’s /templates/ folder
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -53,12 +54,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'myapp.wsgi.application'
 
-# Database
+# Database (uses PostgreSQL in Render or SQLite as fallback)
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default=f'sqlite:///{BASE_DIR / "db.sqlite3"}'
+    )
 }
 
 # Password validation
@@ -75,23 +75,20 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-import os
-
-# Static files (CSS, JavaScript, Images)
-STATIC_URL = '/static/'  # must start and end with slashes
-
+# Static files
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'mojito/static'),  
-]   
+    os.path.join(BASE_DIR, 'mojito/static'),
+]
 
-# Email Configuration
+# Email Configuration (hardcoded)
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'Thoufic854@gmail.com'
-EMAIL_HOST_PASSWORD = 'bcjt duiq naoi ecoj'
-
+EMAIL_HOST_PASSWORD = 'bcjt duiq naoi ecoj'  # Your Gmail App Password
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
