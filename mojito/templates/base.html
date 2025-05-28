@@ -15,16 +15,35 @@
   <!-- Navigation Bar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
     <div class="container">
-      <a class="navbar-brand" href="#">Khilla Mojitos</a>
+      <a class="navbar-brand" href="{% url 'index' %}">Khilla Mojitos</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About Us</a></li>
-          <li class="nav-item"><a class="nav-link" href="{% url 'cart_view' %}">Cart ({{ request.session.cart|length|default:0 }})</a></li>
+
+          <!-- Category Anchor Links -->
+          <li class="nav-item"><a class="nav-link" href="{% url 'index' %}#mojitos">Mojitos</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'index' %}#milkshakes">Milkshakes</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'index' %}#cold-coffee">Cold Coffee</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'index' %}#pizzas">Pizza</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'index' %}#falooda">Falooda</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'index' %}#milkbev">Milk Beverages</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'index' %}#icecream">Ice Cream</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'index' %}#burger">Burger</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'index' %}#friedchicken">Fried Chicken</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'index' %}#freshjuice">Fresh Juice</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'index' %}#snacks">Snacks</a></li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'cart_view' %}">
+              Cart ({{ request.session.cart|length|default:"0" }})
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -35,16 +54,6 @@
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Price Update Script -->
-  <script>
-    function updatePrice(selectElement) {
-      const selectedOption = selectElement.options[selectElement.selectedIndex];
-      const price = selectedOption.getAttribute('data-price');
-      const itemName = selectElement.closest('form').querySelector('input[name="item_name"]').value;
-      document.getElementById(`price-${itemName.replace(/\s+/g, '-')}`).value = price;
-    }
-  </script>
 
 </body>
 </html>
