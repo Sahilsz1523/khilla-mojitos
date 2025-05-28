@@ -141,3 +141,6 @@ def set_table_number(request):
 
 def about_us(request):
     return render(request, 'about.html')
+
+def order_confirmation(request):
+    return render(request, 'order.html')
