@@ -98,8 +98,8 @@ def place_order(request):
             send_mail(
                 subject=f"New Order from Table {table_no}",
                 message=message,
-                from_email="sahilsn2005@gmail.com",
-                recipient_list=["sahilsn2005@gmail.com"],
+                from_email="Thoufic854@gmail.com",
+                recipient_list=["Thoufic854@gmail.com"],
                 fail_silently=False,
             )
         except Exception as e:
